@@ -1,0 +1,17 @@
+[Unit]
+Description=Chiadog Staicoin
+Wants=network-online.target
+After=network.target network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Restart=always
+RestartSec=1
+User=root
+
+WorkingDirectory=/root/chiadog
+Environment=PATH=/root/chiadog/venv/bin:${PATH}
+ExecStart=/usr/bin/env python3 main.py --config config-staicoin.yaml
+
+[Install]
+WantedBy=multi-user.target
